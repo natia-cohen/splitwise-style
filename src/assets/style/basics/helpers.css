@@ -1,0 +1,94 @@
+/* Font Sizes */
+.fs12 { font-size: 0.75rem; }   /* 12px */
+.fs14 { font-size: 0.875rem; }  /* 14px */
+.fs18 { font-size: 1.125rem; }  /* 18px */
+.fs20 { font-size: 1.25rem; }   /* 20px */
+.fs24 { font-size: 1.5rem; }    /* 24px */
+.fs28 { font-size: 1.75rem; }   /* 28px */
+.fs30 { font-size: 1.875rem; }  /* 30px */
+
+/* Flex helpers */
+.flex {
+  display: flex;
+}
+
+.flex > *.full {
+  flex: 1;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.justify-center {
+  justify-content: center;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+/* Media helpers */
+
+/* Square Ratio (1:1) */
+.square-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.square-ratio::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.square-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Video Ratio (16:9) */
+.video-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-ratio::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.video-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Portrait Ratio (9:16) */
+.portrait-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.portrait-ratio::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 177.78%;
+}
+
+.portrait-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

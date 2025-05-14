@@ -11,13 +11,13 @@ useEffect(() => {
 }, []);
 
   return (
-    <section>
+    <main className="groups-page">
       <h1>Groups</h1>
       <ul>
         {groups.map((group: any) => (
           <li key={group._id}>{group.title}</li>
         ))}
       </ul>
-    </section>
+    </main>
   );
 }

@@ -1,0 +1,26 @@
+/* Button Styles */
+button {
+  border: 0;
+  background-color: var(--clr1);
+  color: whitesmoke;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* Form Elements Block Display */
+form > * {
+  display: block;
+  margin: 10px 0;
+}
+
+/* Link-style Button */
+.btn-link {
+  border: 0;
+  background-color: transparent;
+  transition: 0.5s;
+}
+
+.btn-link:hover {
+  background-color: var(--clr1);
+}

@@ -1,0 +1,27 @@
+:root {
+  --clr-primary: #6200ee;
+    --clr-bg: #ffffff;
+    --clr-secondary: #03dac6;
+    --clr-text: #333;
+    --clr-white: #ffffff;
+    --clr-text: #111;
+    --clr-border: #e0e0e0;
+    --clr-footer-bg: #dcdcdc;
+  
+    --font-family-base:  'Inter', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+  
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+  
+
+    --header-height: 4rem;
+
+     --font-size-sm: 0.75rem;  /* 12px */
+  --font-size-md: 1rem;     /* 16px */
+  --font-size-lg: 1.5rem;   /* 24px */
+  --font-size-xl: 2rem;    
+  }
+  

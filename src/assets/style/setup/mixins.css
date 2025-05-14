@@ -1,0 +1,55 @@
+/* Mobile layout */
+@media (max-width: 500px) {
+  .some-class {
+    /* styles for mobile */
+  }
+}
+
+/* Narrow layout */
+@media (min-width: 500px) {
+  .some-class {
+    /* styles for narrow layout */
+  }
+}
+
+/* Normal layout */
+@media (min-width: 760px) {
+  .some-class {
+    /* styles for normal layout */
+  }
+}
+
+/* Wide layout */
+@media (min-width: 1000px) {
+  .some-class {
+    /* styles for wide layout */
+  }
+}
+
+/* Aspect Ratio Example */
+.aspect-ratio-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.aspect-ratio-box::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 56.25%; /* example for 16:9 */
+}
+
+.aspect-ratio-box > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Hover supported example */
+@media not all and (pointer: coarse) {
+  .some-class:hover {
+    /* hover styles */
+  }
+}

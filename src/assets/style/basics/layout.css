@@ -1,0 +1,20 @@
+/* Main Container Layout */
+.main-container {
+  display: grid;
+  grid-template-columns: 1rem 1fr 1rem;
+}
+
+.main-container > * {
+  grid-column: 2;
+}
+
+.main-container > *.full {
+  grid-column: 1 / -1;
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}

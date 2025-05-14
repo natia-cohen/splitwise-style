@@ -1,0 +1,32 @@
+.app-header {
+  display: flex;
+  min-height: 3.5rem;
+  background-color: var(--clr4);
+  padding: 0.625rem 1rem; /* 10px = 0.625rem */
+}
+
+.app-header nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1em;
+  font-size: 0.8em;
+}
+
+.app-header nav .active {
+  color: var(--clr1);
+}
+
+.app-header nav .logo {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-inline-end: 2em;
+}
+
+.app-header nav .login-link {
+  margin-inline-start: auto;
+}
+
+.app-header nav button {
+  margin-inline-end: 0;
+}
