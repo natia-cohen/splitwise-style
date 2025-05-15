@@ -1,20 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { Group } from '../../models/group.model';
 
-interface Expense {
-  id: string;
-  title: string;
-  amount: number;
-  paidBy: string;
-  splitBetween: string[];
-}
-
-interface Group {
-  _id: string;
-  title: string;
-  members: string[];
-  expenses: Expense[];
-}
 
 interface GroupState {
   groups: Group[];

@@ -1,23 +1,9 @@
 import { storageService } from "../async-storage.service";
 import { groupsData } from "../../data/groups.data";
+import type { Group } from "../../models/group.model";
 
 
-
-const GROUP_TYPE = "group";
-interface Expense {
-  id: string;
-  title: string;
-  amount: number;
-  paidBy: string;
-  splitBetween: string[];
-}
-
-interface Group {
-  _id: string;
-  title: string;
-  members: string[];
-  expenses: Expense[];
-}
+const GROUP_TYPE = "groups";
 
 
 export const groupService = {
