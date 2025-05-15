@@ -10,15 +10,13 @@ export function GroupsPage() {
 useEffect(() => {
   loadGroups(); 
 }, []);
-function handleSelectGroup(){
-  
-}
+
 
   return (
     <main className="groups-page">
 
       <h1>Groups</h1>
-     <GroupList groups={groups} onSelectGroup={handleSelectGroup} />
+     <GroupList groups={groups}  />
     </main>
   );
 }
