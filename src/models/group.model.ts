@@ -1,14 +1,16 @@
 export interface Expense {
-  id: string;
-  title: string;
-  amount: number;
-  paidBy: string;
-  splitBetween: string[];
+  id: string
+  title: string
+  amount: number
+  paidBy: string
+  createdAt: string
+  splitBetween: string[]
 }
 
 export interface Group {
-  _id: string;
-  title: string;
-  members: string[];
-  expenses: Expense[];
+  _id: string
+  title: string
+  members: string[]
+  createdAt: string
+  expenses: Expense[]
 }

@@ -1,0 +1,13 @@
+.group-details-page {
+  display: grid;
+  grid-template-columns: 1fr minmax(800px,960px) 1fr;
+  position: relative;
+  margin: 0;
+  background: #fff;
+  min-height: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  margin: 0 200px 0 200px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+}

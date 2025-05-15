@@ -1,12 +1,12 @@
 /* Main Container Layout */
 .main-container {
   display: grid;
-   grid-template-columns: 1fr minmax(960px, 1200px) 1fr;
+   grid-template-columns: 1fr minmax(800px, 1200px) 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
   min-height: calc(100vh - 10rem);
   overflow: auto;
-  gap: 20px;
+  gap: 5px;
 }
 
 .main-container > * {
