@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { store } from "./store/store";
 import { RootCmp } from "./RootCmp";
 
-import "./assets/styles/main.css";
+import "./assets/style/main.css";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 if (!rootElement) throw new Error("Root element not found");

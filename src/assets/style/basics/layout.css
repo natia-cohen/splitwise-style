@@ -1,7 +1,12 @@
 /* Main Container Layout */
 .main-container {
   display: grid;
-  grid-template-columns: 1rem 1fr 1rem;
+   grid-template-columns: 1fr minmax(960px, 1200px) 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  min-height: calc(100vh - 10rem);
+  overflow: auto;
+  gap: 20px;
 }
 
 .main-container > * {
@@ -11,8 +16,14 @@
 .main-container > *.full {
   grid-column: 1 / -1;
 }
+main {
+  grid-row: 2;
+  overflow-y: auto;
+  min-height: 0;
+}
 
 /* Card Grid Layout */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
