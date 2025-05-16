@@ -4,12 +4,13 @@
   position: relative;
   z-index: 9;
   background: #eee;
-  border-bottom: none;
+border-bottom: 1px solid #ddd;
   padding: 9px 8px 6px;
   border-bottom: 1px solid #ddd;
   font-size: 13px;
   line-height: 18px;
   color: #333333;
+
 }
 .group-header .group-header-left {
   height: 48px;

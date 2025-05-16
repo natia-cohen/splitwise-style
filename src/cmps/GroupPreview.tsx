@@ -6,11 +6,10 @@ interface GroupPreviewProps {
 }
 
 export function GroupPreview({ group }: GroupPreviewProps) {
-      const navigate = useNavigate()
+  const navigate = useNavigate()
   function handleSelectGroup(group: Group) {
     navigate(`/group/${group._id}`)
   }
-
 
   return (
     <div className="group-card" onClick={() => handleSelectGroup(group)}>

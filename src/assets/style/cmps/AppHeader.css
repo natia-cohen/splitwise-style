@@ -1,4 +1,4 @@
-.app-header{
+.app-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,15 +9,14 @@
 
 }
 
-
 .app-header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 960px;
   padding: 0 10px;
+    
 }
-
 
 .app-header .logo {
   font-size: 1.2rem;
