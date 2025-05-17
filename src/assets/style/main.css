@@ -12,6 +12,7 @@
 /* Pages */
 @import "RootCmp.css";
 @import "pages/GroupDetailsPage.css";
+@import "pages/GroupPage.css";
 
 /* Components */
 @import "cmps/AppHeader.css";

@@ -67,20 +67,100 @@
   color: green;
 }
 
-.actions {
+
+.expense-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.expense:hover {
+  background-color: #f9f9f9;
+}
+
+.expense-preview .main-block {
+  cursor: pointer;
+  display: inline-block;
+  width: 307px;
+  padding: 9px 5px 6px 68px;
+  position: relative;
+}
+.expense-preview .main-block .date{
+      float: left;
+    margin: -1px 10px 0 -65px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: normal;
+}
+
+.expense-preview .main-block .expense-img{
+    float: left;
+    margin: 1px 7px 0 -28px;
+    height: 35px;
+    width: 35px;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    overflow: clip;
+}
+.expense-preview:hover .actions {
+  opacity: 1;
+}
+
+
+.icon {
+  font-size: 20px;
+}
+
+.title {
+  font-weight: bold;
+  color: #333;
+}
+
+.cost {
+  text-align: right;
+  font-size: 12px;
+  color: #666;
+}
+
+.paid {
+  font-weight: bold;
+  color: black;
+}
+
+.lent {
+  color: green;
+}
+
+/* .actions {
   position: absolute;
   right: 10px;
   opacity: 0;
   transition: opacity 0.3s;
-}
+} */
 
-.expense:hover .actions {
-  opacity: 1;
-}
-
-.delete-btn {
+/* .actions {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 2;
+} */
+/* .delete-btn {
   background: none;
   border: none;
   color: red;
   cursor: pointer;
 }
+
+ */

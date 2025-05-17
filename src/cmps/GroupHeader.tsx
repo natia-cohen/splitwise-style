@@ -5,7 +5,7 @@ interface GroupHeaderProps {
 }
 
 export function GroupHeader({ group, onAddExpenseClick }: GroupHeaderProps) {
-  console.log("group from GroupHeader", group)
+ 
 
   if (!group) return <div className="group-header">Loading...</div>
   return (
@@ -19,7 +19,7 @@ export function GroupHeader({ group, onAddExpenseClick }: GroupHeaderProps) {
       </div>
 
       <div className="group-header-actions">
-        <button className="add-expense-btn" onClick={onAddExpenseClick}>Add an expense</button>
+        <button className="add-expense-btn" onClick={onAddExpenseClick} disabled={!group} >Add an expense</button>
         <button className="leave-group-btn">Leave group</button>
       </div>
     </header>

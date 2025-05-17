@@ -40,13 +40,13 @@ export function randomPastTime(): number {
   return Date.now() - pastTime;
 }
 
-export function debounce<T extends (...args: any[]) => void>(func: T, timeout: number = 300): (...args: Parameters<T>) => void {
-  let timer: ReturnType<typeof setTimeout>;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
-}
+// export function debounce<T extends (...args: any[]) => void>(func: T, timeout: number = 300): (...args: Parameters<T>) => void {
+//   let timer: ReturnType<typeof setTimeout>;
+//   return (...args: Parameters<T>) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => { func.apply(this, args); }, timeout);
+//   };
+// }
 
 export function saveToStorage(key: string, value: any): void {
   localStorage.setItem(key, JSON.stringify(value));
@@ -56,3 +56,4 @@ export function loadFromStorage<T = any>(key: string): T | undefined {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : undefined;
 }
+

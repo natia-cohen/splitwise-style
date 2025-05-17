@@ -1,55 +1,52 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Group } from '../../models/group.model';
-
+import { createSlice } from "@reduxjs/toolkit"
+import type { PayloadAction } from "@reduxjs/toolkit"
+import type { Group } from "../../models/group.model"
 
 interface GroupState {
-  groups: Group[];
-  group: Group | null;
-  isLoading: boolean;
-  lastRemovedGroup?: Group;
+  groups: Group[]
+  group: Group | null
+  isLoading: boolean
+  lastRemovedGroup?: Group
 }
-
 
 const initialState: GroupState = {
   groups: [],
   group: null,
   isLoading: false,
   lastRemovedGroup: undefined,
-};
-
+}
 
 const groupSlice = createSlice({
-  name: 'groupModule',
+  name: "groupModule",
   initialState,
   reducers: {
     setGroups(state, action: PayloadAction<Group[]>) {
-      state.groups = action.payload;
+      state.groups = action.payload
     },
     setGroup(state, action: PayloadAction<Group>) {
-      state.group = action.payload;
+      state.group = action.payload
     },
     removeGroup(state, action: PayloadAction<string>) {
-      const groupId = action.payload;
-      const removed = state.groups.find(group => group._id === groupId);
-      state.groups = state.groups.filter(group => group._id !== groupId);
-      state.lastRemovedGroup = removed;
+      const groupId = action.payload
+      const removed = state.groups.find((group) => group._id === groupId)
+      state.groups = state.groups.filter((group) => group._id !== groupId)
+      state.lastRemovedGroup = removed
     },
     addGroup(state, action: PayloadAction<Group>) {
-      state.groups.push(action.payload);
+      state.groups.push(action.payload)
     },
     updateGroup(state, action: PayloadAction<Group>) {
-      state.groups = state.groups.map(group =>
+      state.groups = state.groups.map((group) =>
         group._id === action.payload._id ? action.payload : group
-      );
+      )
+      state.group = action.payload
     },
- 
+
     setLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
+      state.isLoading = action.payload
     },
   },
-});
-
+})
 
 export const {
   setGroups,
@@ -58,6 +55,6 @@ export const {
   addGroup,
   updateGroup,
   setLoading,
-} = groupSlice.actions;
+} = groupSlice.actions
 
-export const groupReducer = groupSlice.reducer;
+export const groupReducer = groupSlice.reducer
