@@ -1,0 +1,17 @@
+.group-details-page {
+  display: grid;
+  grid-template-columns: 1fr minmax(800px, 960px) 1fr;
+  position: relative;
+  margin: 0 200px;
+  background: #fff;
+  min-height: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding-top: 40px; 
+}
+
+
+.group-details-page > * {
+  grid-column: 2;
+}

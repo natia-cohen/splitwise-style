@@ -5,8 +5,9 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { GroupHeader } from "../cmps/GroupHeader"
 import { ExpenseList } from "../cmps/ExpenseList"
-import { AddExpenseDialog } from "../cmps/AddExpenseDialog"
+
 import type { Expense } from "../models/group.model"
+import { AddExpenseDialog } from "../cmps/AddExpenseDialog"
 
 export function GroupDetailsPage() {
   const { groupId } = useParams<{ groupId: string }>()
