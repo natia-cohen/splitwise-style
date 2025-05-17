@@ -1,10 +1,15 @@
+export interface ExpenseSplit {
+  name: string
+  owes: number
+}
+
 export interface Expense {
   id: string
   title: string
   amount: number
   paidBy: string
   createdAt: string
-  splitBetween: string[]
+  splitBetween: ExpenseSplit[]
 }
 
 export interface Group {
