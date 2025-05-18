@@ -1,5 +1,33 @@
-/* Main Container Layout */
 .main-container {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 960px) 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.main-container > .app-header {
+  grid-column: 1 / -1;
+}
+
+.main-container > main {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 20px;
+  min-width: 0;
+}
+
+main > * {
+  width: 100%;
+}
+main {
+  margin-top: 3.5rem; 
+}
+
+
+/* Main Container Layout */
+/* .main-container {
   display: grid;
    grid-template-columns: 1fr minmax(800px, 1200px) 1fr;
   grid-template-rows: auto 1fr;
@@ -20,12 +48,12 @@ main {
   grid-row: 2;
   overflow-y: auto;
   min-height: 0;
-}
+} */
 
 /* Card Grid Layout */
 
-.card-grid {
+/* .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
-}
+} */
