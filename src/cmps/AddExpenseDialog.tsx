@@ -1,5 +1,4 @@
 import Dialog from "@mui/material/Dialog"
-import DialogTitle from "@mui/material/DialogTitle"
 import DialogContent from "@mui/material/DialogContent"
 import DialogActions from "@mui/material/DialogActions"
 import Button from "@mui/material/Button"
@@ -7,13 +6,11 @@ import TextField from "@mui/material/TextField"
 import FormGroup from "@mui/material/FormGroup"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Checkbox from "@mui/material/Checkbox"
-// import InputAdornment from "@mui/material/InputAdornment"
-
-import type { Group, Expense, GroupMember } from "../models/group.model"
+import MenuItem from "@mui/material/MenuItem"
 import { useState } from "react"
+import type { Group, Expense, GroupMember } from "../models/group.model"
 import { groupService } from "../services/group/group.service"
 import { buildSplitBetween } from "../services/expense.utils"
-import { MenuItem } from "@mui/material"
 
 interface AddExpenseDialogProps {
   isOpen: boolean
@@ -45,21 +42,19 @@ export function AddExpenseDialog({
       setExpense({ ...expense, amount: 0 })
       return
     }
-
     const value = Number(input)
-
     setExpense({ ...expense, amount: value })
   }
 
   function handleAmountBlur(ev: React.FocusEvent<HTMLInputElement>) {
     ev.stopPropagation()
     let value = Number(ev.target.value)
-
     if (!isNaN(value) && value < 0) {
       value = Math.abs(value)
       setExpense({ ...expense, amount: value })
     }
   }
+
   function toggleSplitMember(member: GroupMember) {
     const updatedSplit = expense.splitBetween.map((split) =>
       split.id === member.id ? { ...split, isChecked: !split.isChecked } : split
@@ -97,45 +92,101 @@ export function AddExpenseDialog({
   }
 
   return (
-    <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>Add New Expense</DialogTitle>
-      <DialogContent>
-        {/* Title */}
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      PaperProps={{
+        sx: {
+          borderRadius: 2,
+          p: 0,
+          background: "#fff",
+          minWidth: { xs: 310, sm: 350 },
+          maxWidth: 410,
+        }
+      }}
+    >
+      <DialogContent
+        sx={{
+          px: { xs: 2, sm: 4 },
+          pt: 3,
+          pb: 1,
+        }}
+      >
+        {/* כותרת מינימלית */}
+        <div style={{
+          fontSize: "1.18rem",
+          fontWeight: 700,
+          textAlign: "left",
+          marginBottom: "14px",
+          color: "#222"
+        }}>
+          Add New Expense
+        </div>
+        {/* שדה TITLE – בלי label, רק placeholder, קו דק ועדין */}
         <TextField
-          label="Title"
-          variant="outlined"
+          placeholder="Expense title"
+          variant="standard"
           fullWidth
           value={expense.title}
           onChange={handleTitleChange}
-          required
+          autoFocus
+          sx={{
+            mb: 1.5,
+            "& .MuiInputBase-root": {
+              fontWeight: 500,
+              fontSize: "1.08rem",
+              background: "#fafbfc",
+              borderRadius: 1,
+              borderBottom: "1.2px solid #e0e5eb"
+            },
+            "& input": {
+              padding: "10px 8px",
+            }
+          }}
         />
 
         {/* Amount */}
         <TextField
-          label="Amount"
-          variant="outlined"
+          placeholder="Amount"
+          variant="standard"
           type="number"
-          placeholder="0.00"
           fullWidth
           value={expense.amount === 0 ? "" : expense.amount}
           onChange={handleAmountChange}
           onBlur={handleAmountBlur}
-          required
-          // InputProps={{
-          //   endAdornment: <InputAdornment position="end">$</InputAdornment>,
-          // }}
+          sx={{
+            mb: 1.5,
+            "& .MuiInputBase-root": {
+              fontWeight: 500,
+              fontSize: "1.08rem",
+              background: "#fafbfc",
+              borderRadius: 1,
+              borderBottom: "1.2px solid #e0e5eb"
+            },
+            "& input": {
+              padding: "10px 8px",
+            }
+          }}
         />
 
         {/* Paid By */}
         <TextField
           select
-          label="Paid By"
-          variant="outlined"
+          placeholder="Paid By"
+          variant="standard"
           fullWidth
           value={expense.paidBy[0]?.id || ""}
           onChange={handlePaidByChange}
-          required
-          style={{ margin: "16px 0" }}
+          sx={{
+            mb: 1.5,
+            "& .MuiInputBase-root": {
+              fontWeight: 500,
+              fontSize: "1.08rem",
+              background: "#fafbfc",
+              borderRadius: 1,
+              borderBottom: "1.2px solid #e0e5eb"
+            }
+          }}
         >
           {group.members.map((member) => (
             <MenuItem key={member.id} value={member.id}>
@@ -145,7 +196,7 @@ export function AddExpenseDialog({
         </TextField>
 
         {/* splitBetween */}
-        <FormGroup>
+        <FormGroup sx={{ mt: 2 }}>
           {expense.splitBetween.map((split) => {
             const splitAmount = split.isChecked
               ? getSplitAmount()
@@ -159,19 +210,57 @@ export function AddExpenseDialog({
                     onChange={() =>
                       toggleSplitMember({ id: split.id, name: split.name })
                     }
+                    sx={{ color: "#1976d2" }}
                   />
                 }
-                label={`${split.name} - ${
-                  split.isChecked ? `${splitAmount}₪` : "Not included"
-                }`}
+                label={
+                  <span style={{
+                    fontWeight: split.isChecked ? 600 : 400,
+                    color: split.isChecked ? "#1976d2" : "#999",
+                  }}>
+                    {split.name}
+                    {" — "}
+                    {split.isChecked ? `${splitAmount}₪` : "Not included"}
+                  </span>
+                }
+                sx={{ mb: 0.2 }}
               />
             )
           })}
         </FormGroup>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={() => handleSave()}>Save</Button>
+      <DialogActions sx={{ px: 3, pb: 2, pt: 0 }}>
+        <Button
+          onClick={onClose}
+          variant="text"
+          sx={{
+            color: "#1976d2",
+            fontWeight: 500,
+            fontSize: "1rem",
+            minWidth: 80
+          }}
+        >
+          Cancel
+        </Button>
+        <Button
+          onClick={handleSave}
+          variant="contained"
+          color="success"
+          sx={{
+            px: 2.2,
+            borderRadius: 2,
+            fontWeight: 600,
+            fontSize: "1.03rem",
+            textTransform: "none",
+            boxShadow: "none",
+            ml: 1,
+            height: 36,
+            minWidth: 80
+          }}
+          disabled={!expense.title.trim() || !expense.amount}
+        >
+          Save
+        </Button>
       </DialogActions>
     </Dialog>
   )

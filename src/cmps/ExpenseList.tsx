@@ -6,19 +6,24 @@ interface GroupExpenseList {
   onDelete: (expenseId: string) => void
 }
 
-
-export function ExpenseList({ group , onDelete }: GroupExpenseList) {
-  const currentUserId = 'a1b' 
-if(!group) return <div>Loading...</div>
+export function ExpenseList({ group, onDelete }: GroupExpenseList) {
+  const currentUserId = 'u001'
+  if (!group) return 
 
   return (
-    <div className="main-expense">
+    <section className="expense-list-container">
       <div className="expense-list">
         {group.expenses.map((expense) => (
-          <ExpensePreview key={expense.id} expense={expense} currentUserId={currentUserId} onDelete={onDelete}/>
+          <ExpensePreview
+            key={expense.id}
+            expense={expense}
+            currentUserId={currentUserId}
+            onDelete={onDelete}
+          />
         ))}
       </div>
-      <div className="month-divider"></div>
-    </div>
+    </section>
   )
 }
+
+

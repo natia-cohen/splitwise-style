@@ -1,4 +1,24 @@
+.expense-list-container {
+  width: 100%;
+  background: #fff;
+  min-height: 320px;
+  box-sizing: border-box;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 1px 8px #0001;
+  margin: 0 auto 18px auto;
+  padding: 0 0 22px 0;
+  max-width: 800px;
+    overflow-x: auto;
+}
 
 .expense-list {
-    padding: 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.month-divider {
+  height: 0px;
+  margin: 0;
+  border: none;
 }

@@ -7,8 +7,10 @@ import type { Group } from "../models/group.model"
 
 import { Fab } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add"
+import { Loader } from "../cmps/Loader"
 
 export function GroupsPage() {
+  const isLoading = useSelector((state: any) => state.groupModule.isLoading)
   const groups = useSelector((state: any) => state.groupModule.groups)
   const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false)
 
@@ -35,7 +37,10 @@ export function GroupsPage() {
 
   return (
     <main className="groups-page">
-      <GroupList groups={groups} />
+      {isLoading
+      ? <Loader />
+      : <GroupList groups={groups} />
+    }
       <Fab
         color="primary"
         aria-label="add"

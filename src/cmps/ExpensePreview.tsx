@@ -5,6 +5,8 @@ import {
   getUserLent,
   getUserOwes,
 } from "../services/expense.utils"
+import IconButton from "@mui/material/IconButton"
+import DeleteIcon from "@mui/icons-material/Delete"
 
 interface ExpensePreviewProps {
   expense: Expense
@@ -20,56 +22,53 @@ export function ExpensePreview({
   if (!expense) return null
 
   const paid = getUserPaid(expense, currentUserId)
-
   const lent = getUserLent(expense, currentUserId)
-
   const owes = getUserOwes(expense, currentUserId)
 
   return (
     <div className="expense-preview">
-      <div className="main-block">
-        <span className="date">{formatDate(expense.createdAt)}</span>
-        <div className="icon">
-          <img
-            className="expense-img"
-            src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square_v2/food-and-drink/dining-out@2x.png"
-            alt=""
-          />
-        </div>
-        <div className="title">{expense.title}</div>
+      <div className="expense-left">
+        <span className="expense-date">{formatDate(expense.createdAt)}</span>
+        <img
+          className="expense-img"
+          src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square_v2/food-and-drink/dining-out@2x.png"
+          alt=""
+        />
+        <span className="expense-title">{expense.title}</span>
       </div>
-
-      <div className="cost">
+      <div className="expense-middle">
         {paid > 0 && (
-          <div className="paid">
-            You paid <b>${paid}</b>
-          </div>
+          <div className="expense-paid">You paid <b>${paid}</b></div>
         )}
         {lent > 0 && (
-          <div className="lent">
-            You lent <b>${lent}</b>
-          </div>
+          <div className="expense-lent">You lent <b>${lent}</b></div>
         )}
         {owes > 0 && (
-          <div className="owes">
-            You owe <b>${owes}</b>
-          </div>
+          <div className="expense-owes">You owe <b>${owes}</b></div>
         )}
         {paid === 0 && lent === 0 && owes === 0 && (
-          <div className="nothing">No balance for you in this expense</div>
+          <div className="expense-nothing">No balance for you in this expense</div>
         )}
       </div>
-      <div className="actions">
-        <button
-          className="delete-btn"
-          onClick={(ev) => {
-            ev.stopPropagation()
-            onDelete(expense.id)
-          }}
-        >
-          ❌
-        </button>
-      </div>
+      <IconButton
+        aria-label="delete"
+        onClick={(ev) => {
+          ev.stopPropagation()
+          onDelete(expense.id)
+        }}
+        sx={{
+          color: "#e61855",
+          ml: 2,
+          "&:hover": {
+            background: "#ffe4ee"
+          }
+        }}
+        size="small"
+      >
+        <DeleteIcon fontSize="small" />
+      </IconButton>
     </div>
   )
 }
+
+
