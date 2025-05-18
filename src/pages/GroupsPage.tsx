@@ -22,7 +22,7 @@ export function GroupsPage() {
     setIsAddDialogOpen(false)
   }
 
-  async function handleAddGroup(newGroup: Group) {
+  async function handleAddGroup( newGroup: Omit<Group, "_id">) {
     await addGroupAction(newGroup)
     setIsAddDialogOpen(false)
   }

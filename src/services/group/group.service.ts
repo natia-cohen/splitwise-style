@@ -10,9 +10,9 @@ export const groupService = {
   getById,
   save,
   remove,
-  getDefaultFilter,
+  getEmptyGroup,
   getEmptyExpense,
-
+  getEmptyMember,
 }
 
 async function query(): Promise<Group[]> {
@@ -39,25 +39,22 @@ function remove(groupId: string): Promise<void> {
   return storageService.remove(GROUP_TYPE, groupId)
 }
 
-// function getEmptyGroup(): Group {
-//   return { title: "" };
-// }
-
-function getDefaultFilter(): { txt: string } {
-  return { txt: "" }
+export function getEmptyGroup() {
+  return {
+    title: "",
+    createdAt: new Date().toISOString().slice(0, 10),
+    members: [],
+    expenses: [],
+  }
 }
-
-async function _loadAndCacheFromApi(): Promise<Group[]> {
-  try {
-    await storageService.saveAll(GROUP_TYPE, groupsData)
-    return groupsData
-  } catch (err) {
-    console.error("Failed to load local data:", err)
-    throw err
+export function getEmptyMember() {
+  return {
+    id: makeId(),
+    name: "",
   }
 }
 
-export function getEmptyExpense(group: Group): Expense {
+function getEmptyExpense(group: Group): Expense {
   return {
     id: makeId(),
     title: "",
@@ -75,3 +72,13 @@ export function getEmptyExpense(group: Group): Expense {
   }
 }
 
+//private functions
+async function _loadAndCacheFromApi(): Promise<Group[]> {
+  try {
+    await storageService.saveAll(GROUP_TYPE, groupsData)
+    return groupsData
+  } catch (err) {
+    console.error("Failed to load local data:", err)
+    throw err
+  }
+}
