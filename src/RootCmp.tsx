@@ -5,6 +5,7 @@ import { GroupDetailsPage } from "./pages/GroupDetailsPage"
 
 export function RootCmp() {
   return (
+    //
     <div className="main-container">
       <AppHeader />
       <main>

@@ -26,15 +26,24 @@ export function getUserOwes(expense: Expense, userId: string) {
 
 export function getUserLent(expense: Expense, userId: string) {
   const userPaid = getUserPaid(expense, userId)
-  if (!userPaid) return 0
-  let lent = 0
+  if (!userPaid) return
+  let lent = { name: "", amount: 0 }
+  let lents:any = []
+
   expense.splitBetween.forEach((split) => {
     if (split.id !== userId && split.isChecked) {
-      lent += split.owes
+
+      lent.amount += split.owes
+      lent.name = split.name
+
     }
+    lent.amount = Number(lent.amount.toFixed(2))
+    lents.push(lent)
   })
-  return Number(lent.toFixed(2))
+
+  return lents
 }
+
 export function buildSplitBetween(expense: Expense, payerId: string) {
   const selectedCount = expense.splitBetween.filter((s) => s.isChecked).length
   const splitAmount = selectedCount ? expense.amount / selectedCount : 0

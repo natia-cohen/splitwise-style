@@ -14,15 +14,18 @@ interface ExpensePreviewProps {
   onDelete: (expenseId: string) => void
 }
 
+//function that renders the expense preview
 export function ExpensePreview({
   expense,
   currentUserId,
   onDelete,
 }: ExpensePreviewProps) {
   if (!expense) return null
+  console.log("currentUserId", currentUserId)
 
   const paid = getUserPaid(expense, currentUserId)
-  const lent = getUserLent(expense, currentUserId)
+  const lents = getUserLent(expense, currentUserId)
+  console.log("lents", lents)
   const owes = getUserOwes(expense, currentUserId)
 
   return (
@@ -38,16 +41,31 @@ export function ExpensePreview({
       </div>
       <div className="expense-middle">
         {paid > 0 && (
-          <div className="expense-paid">You paid <b>${paid}</b></div>
+          <div className="expense-paid">
+            {expense.paidBy[0].name} <b>${paid}</b>
+          </div>
         )}
-        {lent > 0 && (
-          <div className="expense-lent">You lent <b>${lent}</b></div>
-        )}
+
+        {expense.splitBetween.map((member: any) => {
+          if(member.id === currentUserId) return null
+          return (
+            <div className="expense-lent">
+              <b>
+               {member.name} {member.owes}
+              </b>
+            </div>
+          )
+        })}
+
         {owes > 0 && (
-          <div className="expense-owes">You owe <b>${owes}</b></div>
+          <div className="expense-owes">
+            <b>${owes}</b>
+          </div>
         )}
-        {paid === 0 && lent === 0 && owes === 0 && (
-          <div className="expense-nothing">No balance for you in this expense</div>
+        {paid === 0 && lents.lent?.amount === 0 && owes === 0 && (
+          <div className="expense-nothing">
+            No balance for you in this expense
+          </div>
         )}
       </div>
       <IconButton
@@ -60,8 +78,8 @@ export function ExpensePreview({
           color: "#e61855",
           ml: 2,
           "&:hover": {
-            background: "#ffe4ee"
-          }
+            background: "#ffe4ee",
+          },
         }}
         size="small"
       >
@@ -70,5 +88,3 @@ export function ExpensePreview({
     </div>
   )
 }
-
-

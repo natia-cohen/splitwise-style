@@ -7,7 +7,8 @@ interface GroupExpenseList {
 }
 
 export function ExpenseList({ group, onDelete }: GroupExpenseList) {
-  const currentUserId = 'u001'
+
+
   if (!group) return 
 
   return (
@@ -17,7 +18,7 @@ export function ExpenseList({ group, onDelete }: GroupExpenseList) {
           <ExpensePreview
             key={expense.id}
             expense={expense}
-            currentUserId={currentUserId}
+            currentUserId={expense.paidBy[0].id}
             onDelete={onDelete}
           />
         ))}
