@@ -121,7 +121,6 @@ export function AddGroupDialog({
           pb: 1,
         }}
       >
-        {/* כותרת מינימלית */}
         <div
           style={{
             fontSize: "1.25rem",
@@ -133,7 +132,6 @@ export function AddGroupDialog({
         >
           Start a new group
         </div>
-        {/* שדה כותרת עם עיצוב מינימליסטי */}
         <TextField
           placeholder="Group title"
           fullWidth
